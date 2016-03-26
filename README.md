@@ -1,2 +1,2 @@
-# broodwar2
-sc2 a shit
+broodwar2
+a game by wondercoolowl and tainted
