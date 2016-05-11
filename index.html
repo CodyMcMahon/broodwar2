@@ -162,8 +162,8 @@ function mr(){
   c = Math.sqrt(Math.pow(a,2)+Math.pow(b,2));
   newc = c - person.speed;
   if(newc >= 0){
-     newx = person.x - (a/c)* (person.speed);
-     newy = person.y - (b/c)* (person.speed);
+     newx = person.x - ((Math.pow(a,3)/Math.abs(a))/Math.pow(c,2))*(person.speed);//person.x - (a/c)* (person.speed);//zodiacKiller.x - ((Math.pow(a,3)/Math.abs(a))/Math.pow(c,2))*(zodiacKiller.speed);
+     newy = person.y - ((Math.pow(b,3)/Math.abs(b))/Math.pow(c,2))*(person.speed);//zodiacKiller.y - ((Math.pow(b,3)/Math.abs(b))/Math.pow(c,2))*(zodiacKiller.speed);.............................................................................
      if((person.y - 50 > zodiacKiller.y + 50 || person.y + 50 < zodiacKiller.y - 50 ) || (newx - 50 > zodiacKiller.x + 50 || newx + 50 < zodiacKiller.x - 50)){
       person.x = newx;
      }
@@ -183,8 +183,8 @@ function mr(){
   c = Math.sqrt(Math.pow(a,2)+Math.pow(b,2));
   newc = c - zodiacKiller.speed;
   if(newc > 0){
-     newx = zodiacKiller.x - (a/c)* (zodiacKiller.speed);
-     newy = zodiacKiller.y - (b/c)* (zodiacKiller.speed);
+     newx = zodiacKiller.x - ((Math.pow(a,3)/Math.abs(a))/Math.pow(c,2))*(zodiacKiller.speed);
+     newy = zodiacKiller.y - ((Math.pow(b,3)/Math.abs(b))/Math.pow(c,2))*(zodiacKiller.speed);
      if((zodiacKiller.y - 50 > person.y + 50 || zodiacKiller.y + 50 < person.y - 50 ) || (newx - 50 > person.x + 50 || newx + 50 < person.x - 50)){
       zodiacKiller.x = newx;
      }
@@ -197,6 +197,8 @@ function mr(){
     zodiacKiller.y = zodiacKiller.proy;
   }
 }/*
+zodiacKiller.x -= ((Math.pow(a,3)/Math.abs(a))/Math.pow(c,2))*(zodiacKiller.speed)
+    zodiacKiller.y -= ((Math.pow(b,3)/Math.abs(b))/Math.pow(c,2))*(zodiacKiller.speed)
 mv2(l){
   var a;
   var b;
