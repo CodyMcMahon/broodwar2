@@ -9,8 +9,8 @@ function startup(){
   //alert(ctx);
   ctx.drawImage(placeholder_ui_image,0,0,c.width,c.height);
   //alert("fuck2");
-  window.setInterval(drawState, 20);
-	window.setInterval(updateState, 20);
+  window.setInterval(drawState, 10);
+	window.setInterval(updateState, 5);
   //alert("fuck");
   c.addEventListener("mousedown", mouseDown, false);
 	c.addEventListener("mouseup", mouseUp, false);

@@ -16,14 +16,16 @@ function mouseUp(e){
     me.isOnGameScreen = 0;
     me.isClickedDown = 0;
     me.isDragging = 0;
-    me.dragStartX = e.clientX;
-    me.dragStartY = e.clientY;
+    //me.dragStartX = e.clientX;
+    //me.dragStartY = e.clientY;
 	}else if(e.button == 2){
 	}
 }
 
 function mouseOut(e){
-  //unused
+  me.isOnGameScreen = 0;
+  me.isClickedDown = 0;
+  me.isDragging = 0;
 }
 
 function mouseMove(e){
