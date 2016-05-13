@@ -1,13 +1,15 @@
-function drawState()[
+
+function drawState(){
   drawBackground();
   drawUnits();
   drawUI(); 
   drawMiniMap();
   drawBox();
+  //return;
 }
 
-function drawBackgroud(){
-  
+function drawBackground(){
+    ctx.clearRect(0,0,c.width,c.height);
 }
 
 function drawUnits(){
@@ -15,7 +17,7 @@ function drawUnits(){
 }
 
 function drawUI(){
-  ctx.drawimage(placeholder_ui_image,0,0,c.width,c.height);
+  ctx.drawImage(placeholder_ui_image,0,0,c.width,c.height);
 }
 
 function drawMiniMap(){
@@ -24,8 +26,9 @@ function drawMiniMap(){
 
 function drawBox(){
   var x,y,width,height;
-
   if(me.isDragging){
+    
+//ctx.strokeText(me.dragStartX,110,100);
     if(me.dragStartX < me.dragNowX){
       x = me.dragStartX;
       width = me.dragNowX - me.dragStartX;
@@ -34,6 +37,7 @@ function drawBox(){
       x = me.dragNowX;
       width = me.dragStartX - me.dragNowX;
     }
+    
     if(me.dragStartY < me.dragNowY){
       y = me.dragStartY;
       height = me.dragNowY - me.dragStartY;
@@ -42,7 +46,9 @@ function drawBox(){
       y = me.dragNowY;
       height = me.dragStartY - me.dragNowY;
     }
-    ctx.strokeRect(x, y, width, height);
     
+    ctx.strokeStyle="#FF00F0";
+    ctx.strokeRect(x, y, width, height);
   }
+  
 }

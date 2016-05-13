@@ -2,7 +2,7 @@
 
 var me = {
     selection:0,
-    controlGroups:[],
+    controlGroups:0,
     teamID:1,
     teamColor:1,
     x:100,
