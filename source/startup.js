@@ -7,4 +7,6 @@ window.onload(){
 	window.setInterval(updateState, 20);
   c.addEventListener("mousedown", mouseDown, false);
 	c.addEventListener("mouseup", mouseUp, false);
+  c.addEventListener("mousemove", mouseMove, false);
+  c.addEventListener("mouseout", mouseOut, false);
 }
