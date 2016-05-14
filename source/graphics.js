@@ -6,11 +6,14 @@ function drawState(){
   drawMiniMap();
   drawBox();
   
-  vc.style.visibility = "hidden";
-  c.style.visibility =  "visible";
+ // c.style.visibility =  "hidden";
+ /*
+  vc.style.visibility = "visible";
   swapc = vc;
   vc = c;
   c = swapc;
+  ctx = c.getContext("2d");
+  */
   //return;
 }
 
