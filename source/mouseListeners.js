@@ -45,19 +45,19 @@ function mouseMove(e){
       me.isDragging = 1;
     }
   }
-  if(e.clientY < 5){
+  if(e.clientY < 20){
     me.cameraMoveY = "north";
   }
-  else if(e.clientY > c.height - 5){
+  else if(e.clientY > c.height - 20){
     me.cameraMoveY = "south";
   }
   else{
     me.cameraMoveY = "";
   }
-  if(e.clientX < 5){
+  if(e.clientX < 20){
     me.cameraMoveX = "west";
   }
-  else if(e.clientX > c.width - 5){
+  else if(e.clientX > c.width - 20){
     me.cameraMoveX = "east";
   }
   else{
