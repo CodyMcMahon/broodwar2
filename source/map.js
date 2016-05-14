@@ -34,6 +34,6 @@ function mapinit (){
                [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2]],
     floor : [shitgroundtile1,shitgroundtile2,blackedgetile],
     //edge : ,
-    test: "test",
+    //test: "test",
 }; 
 }

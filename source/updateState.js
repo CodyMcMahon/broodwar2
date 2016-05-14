@@ -10,11 +10,11 @@ function updateState(){
     }
   }
   else if(me.cameraMoveY === "south"){
-    if (me.y < ((map.height*map.tilesize) - c.height) - me.cameraMoveSpeed){
+    if (me.y < ((map.height *map.tilesize) - c.height*(4/5) ) - me.cameraMoveSpeed){
       me.y += me.cameraMoveSpeed;
     }
     else{
-      me.y = (map.height*map.tilesize) - c.height;
+      me.y = (map.height*map.tilesize) - c.height*(4/5) ;
     }
   }
   if(me.cameraMoveX === "west"){
