@@ -10,11 +10,11 @@ function updateState(){
     }
   }
   else if(me.cameraMoveY === "south"){
-    if (me.y < ((map.height*100) - c.height) - me.cameraMoveSpeed){
+    if (me.y < ((map.height*map.tilesize) - c.height) - me.cameraMoveSpeed){
       me.y += me.cameraMoveSpeed;
     }
     else{
-      me.y = (map.height*100) - c.height;
+      me.y = (map.height*map.tilesize) - c.height;
     }
   }
   if(me.cameraMoveX === "west"){
@@ -26,11 +26,11 @@ function updateState(){
     }
   }
   else if(me.cameraMoveX === "east"){
-    if (me.x < ((map.width*100) - c.width) - me.cameraMoveSpeed){
+    if (me.x < ((map.width*map.tilesize) - c.width) - me.cameraMoveSpeed){
       me.x += me.cameraMoveSpeed;
     }
     else{
-      me.x = (map.width*100) - c.width;
+      me.x = (map.width*map.tilesize) - c.width;
     }
   }
 }

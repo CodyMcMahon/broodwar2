@@ -11,12 +11,12 @@ function drawState(){
 function drawBackground(){
     ctx.clearRect(0,0,c.width,c.height);
     var xtileindex, ytileindex, xtilenum, ytilenum, xtilestart, ytilestart;
-    xtileindex = Math.floor(me.x/100);
-    ytileindex = Math.floor(me.y/100);
-    xtilenum = Math.floor(c.width/100) + 2;
-    ytilenum = Math.floor(c.height/100) + 1;
-    xtilestart = 0 - (me.x % 100);
-    ytilestart = 0 - (me.y % 100);
+    xtileindex = Math.floor(me.x/map.tilesize);
+    ytileindex = Math.floor(me.y/map.tilesize);
+    xtilenum = Math.floor(c.width/map.tilesize) + 2;
+    ytilenum = Math.floor(c.height/map.tilesize) + 1;
+    xtilestart = 0 - (me.x % map.tilesize);
+    ytilestart = 0 - (me.y % map.tilesize);
     //alert(xtilenum);
     //alert(ytilenum);
     
@@ -28,7 +28,7 @@ function drawBackground(){
         //ctx.drawImage(placeholder_ui_image, 200, 200, 100, 100);
         //alert((map.tiledata[ytileindex + iy])[xtileindex + ix]);
         //alert(map.tileData[ytileindex + iy][xtileindex + ix]);
-        ctx.drawImage(map.floor[map.tiledata[ytileindex + iy][xtileindex + ix]], xtilestart + (ix * 100), ytilestart + (iy * 100), 100, 100);
+        ctx.drawImage(map.floor[map.tiledata[ytileindex + iy][xtileindex + ix]], xtilestart + (ix * map.tilesize), ytilestart + (iy * map.tilesize), map.tilesize, map.tilesize);
       }//map.floor[map.tiledata[ytileindex + iy][xtileindex + ix]]
     }
 }
