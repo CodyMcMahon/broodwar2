@@ -5,15 +5,6 @@ function drawState(){
   drawUI(); 
   drawMiniMap();
   drawBox();
-  
- // c.style.visibility =  "hidden";
- /*
-  vc.style.visibility = "visible";
-  swapc = vc;
-  vc = c;
-  c = swapc;
-  ctx = c.getContext("2d");
-  */
   //return;
 }
 
@@ -38,7 +29,7 @@ function drawBackground(){
         //alert((map.tiledata[ytileindex + iy])[xtileindex + ix]);
         //alert(map.tileData[ytileindex + iy][xtileindex + ix]);
         temp = map.tiledata[ytileindex + iy][xtileindex + ix];
-        if(temp)
+        //if(temp)
           ctx.drawImage(map.floor[temp], xtilestart + (ix * map.tilesize), ytilestart + (iy * map.tilesize), map.tilesize, map.tilesize);
       }//map.floor[map.tiledata[ytileindex + iy][xtileindex + ix]]
     }

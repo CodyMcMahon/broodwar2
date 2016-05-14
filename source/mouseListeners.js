@@ -19,6 +19,7 @@ function mouseUp(e){
     //me.dragStartX = e.clientX;
     //me.dragStartY = e.clientY;
 	}else if(e.button == 2){
+    
 	}
 }
 

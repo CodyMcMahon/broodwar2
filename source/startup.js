@@ -1,13 +1,9 @@
-var c,ctx,vc,swapc;
+var c,ctx;
 function startup(){
-  //vc = document.getElementById("mat2");
   c = document.getElementById("mat");
-  //vc.style.visibility = "hidden";
   ctx = c.getContext("2d");
   c.width = document.body.clientWidth;
   c.height = 800;//document.body.clientHeight;
-  //vc.width = document.body.clientWidth;
-  //vc.height = 800;//document.body.clientHeight;
   ldassets();
   mapinit();
   //alert("fuck");
