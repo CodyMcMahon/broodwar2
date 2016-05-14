@@ -1,15 +1,18 @@
 
 function drawState(){
+  ctx.clearRect(0,0,c.width,c.height);
+  ctx.save();
   drawBackground();
   drawUnits();
   drawUI(); 
   drawMiniMap();
   drawBox();
+  
+  ctx.restore();
   //return;
 }
 
 function drawBackground(){
-    ctx.clearRect(0,0,c.width,c.height);
     var xtileindex, ytileindex, xtilenum, ytilenum, xtilestart, ytilestart, temp;
     xtileindex = Math.floor(me.x/map.tilesize);
     ytileindex = Math.floor(me.y/map.tilesize);
@@ -30,7 +33,7 @@ function drawBackground(){
         //alert(map.tileData[ytileindex + iy][xtileindex + ix]);
         temp = map.tiledata[ytileindex + iy][xtileindex + ix];
         //if(temp)
-          ctx.drawImage(map.floor[temp], xtilestart + (ix * map.tilesize), ytilestart + (iy * map.tilesize), map.tilesize, map.tilesize);
+          ctx.drawImage(map.floor[temp], xtilestart + (ix * map.tilesize), ytilestart + (iy * map.tilesize));//, map.tilesize, map.tilesize);
       }//map.floor[map.tiledata[ytileindex + iy][xtileindex + ix]]
     }
 }

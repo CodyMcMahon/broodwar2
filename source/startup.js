@@ -1,3 +1,14 @@
+window.requestAnimFrame = (function () {
+    return window.requestAnimationFrame ||
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame ||
+            window.oRequestAnimationFrame ||
+            window.msRequestAnimationFrame ||
+            function (/* function */ callback, /* DOMElement */ element) {
+                window.setTimeout(callback, 1000 / 60);
+            };
+})();
+
 var c,ctx;
 function startup(){
   c = document.getElementById("mat");
@@ -10,11 +21,17 @@ function startup(){
   //alert(ctx);
   ctx.drawImage(placeholder_ui_image,0,0,c.width,c.height);
   //alert("fuck2");
-  window.setInterval(drawState, 16);
+  
 	window.setInterval(updateState, 5);
+  //requestAnimFrame(drawState, that.ctx.canvas);
+  //window.setInterval(drawState, 16);
   //alert("fuck");
   c.addEventListener("mousedown", mouseDown, false);
 	c.addEventListener("mouseup", mouseUp, false);
   c.addEventListener("mousemove", mouseMove, false);
   c.addEventListener("mouseout", mouseOut, false);
+  (function animationLOOP() {
+        drawState();
+        requestAnimFrame(animationLOOP, c);
+  })();
 }

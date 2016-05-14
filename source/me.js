@@ -16,5 +16,5 @@ var me = {
     isOnGameScreen: 0,
     cameraMoveY: "",
     cameraMoveX: "",
-    cameraMoveSpeed: 2,
+    cameraMoveSpeed: 4,
 }; 
