@@ -5,12 +5,18 @@ function drawState(){
   drawUI(); 
   drawMiniMap();
   drawBox();
+  
+  vc.style.visibility = "hidden";
+  c.style.visibility =  "visible";
+  swapc = vc;
+  vc = c;
+  c = swapc;
   //return;
 }
 
 function drawBackground(){
     ctx.clearRect(0,0,c.width,c.height);
-    var xtileindex, ytileindex, xtilenum, ytilenum, xtilestart, ytilestart;
+    var xtileindex, ytileindex, xtilenum, ytilenum, xtilestart, ytilestart, temp;
     xtileindex = Math.floor(me.x/map.tilesize);
     ytileindex = Math.floor(me.y/map.tilesize);
     xtilenum = Math.floor(c.width/map.tilesize) + 2;
@@ -28,7 +34,9 @@ function drawBackground(){
         //ctx.drawImage(placeholder_ui_image, 200, 200, 100, 100);
         //alert((map.tiledata[ytileindex + iy])[xtileindex + ix]);
         //alert(map.tileData[ytileindex + iy][xtileindex + ix]);
-        ctx.drawImage(map.floor[map.tiledata[ytileindex + iy][xtileindex + ix]], xtilestart + (ix * map.tilesize), ytilestart + (iy * map.tilesize), map.tilesize, map.tilesize);
+        temp = map.tiledata[ytileindex + iy][xtileindex + ix];
+        if(temp)
+          ctx.drawImage(map.floor[temp], xtilestart + (ix * map.tilesize), ytilestart + (iy * map.tilesize), map.tilesize, map.tilesize);
       }//map.floor[map.tiledata[ytileindex + iy][xtileindex + ix]]
     }
 }
