@@ -12,13 +12,70 @@ function mouseDown(e){
 }
 
 function mouseUp(e){
+  var u = [];
+  var t;
+  var x,y,width,height;
+  
   if(e.button === 0){
+    if(me.isClickedDown){
+      if(me.isDragging){//comment here
+        if(me.dragStartX < me.dragNowX){
+          x = me.dragStartX;
+          width = me.dragNowX - me.dragStartX;
+        }
+        else{
+          x = me.dragNowX;
+          width = me.dragStartX - me.dragNowX;
+        }
+        if(me.dragStartY < me.dragNowY){
+          y = me.dragStartY;
+          height = me.dragNowY - me.dragStartY;
+        }
+        else{
+          y = me.dragNowY;
+          height = me.dragStartY - me.dragNowY;
+        }
+    
+        for(var i = 0;i < map.units.length;i++){
+          t = map.units[i];
+          if(t.isBuilding){
+            if((y < t.y - me.y + t.size/2    
+            &&  y + height > t.y - me.y - t.size/2) 
+            && (x < t.x - me.x + t.size / 2 
+            &&  x + width > t.x - me.x - t.size / 2)){
+              u[u.length] = t;
+            }
+          }
+          else{
+            //units here
+            
+          }
+        }//comment here
+      }
+      else{
+        for(var i = 0;i < map.units.length;i++){
+          t = map.units[i];
+          if(t.isBuilding){
+            if((e.clientX >= t.x - me.x - t.size/2 && e.clientX <= t.x - me.x + t.size/2) &&
+              (e.clientY >= t.y - me.y - t.size/2 && e.clientY <= t.y - me.y + t.size/2)){
+              u[u.length] = t;
+            }
+          }
+          else{
+            //units here
+          }
+        }
+      }
+      //alert(u.length);
+      me.selection = u;
+    }
     me.isOnGameScreen = 0;
     me.isClickedDown = 0;
     me.isDragging = 0;
     //me.dragStartX = e.clientX;
     //me.dragStartY = e.clientY;
-	}else if(e.button == 2){
+	}
+  else if(e.button == 2){
     
 	}
 }

@@ -37,7 +37,8 @@ function mktestbuilding(startx,starty,ID){
     portraitpixels: 80,
     portraitnum:    20,
     portraitn:      0,
-    portraitrate:   1,
+    portraitrate:   .1,
+    size:           100,
   };
   //return 0;
 }

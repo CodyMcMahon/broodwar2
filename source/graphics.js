@@ -48,7 +48,7 @@ function drawUnits(){
         if(u.isBuilding){
           ctx.drawImage(u.img,
                         Math.floor(u.imgn) * u.imgpixels,0,u.imgpixels,u.imgpixels,
-                        u.x-me.x, u.y-me.y, u.imgsize, u.imgsize);
+                        u.x-me.x - u.imgsize / 2, u.y-me.y - u.imgsize / 2, u.imgsize, u.imgsize);
           u.imgn = (u.imgn + u.imgrate) % u.imgnum;
         }
         else{
@@ -61,11 +61,32 @@ function drawUnits(){
 
 function drawUI(){
   var t;
+  var i=0;
   ctx.drawImage(placeholder_ui_image,0,0,c.width,c.height);
   if(me.selection.length){
     t = me.selection[0];
-    ctx.drawImage(t.portrait,Math.floor(t.portraitn) * portraitpixels,0,portraitpixels,portraitpixels,c.clientWidth*.6,c.clientHeight*.8,c.clientWidth*.1,c.clientHeight*.2);
-    t.portraitn += t.portraitrate % t.portraitnum;
+      ctx.drawImage(t.portrait,Math.floor(t.portraitn) * t.portraitpixels,0,t.portraitpixels,t.portraitpixels,c.clientWidth*.62,c.clientHeight*.8,c.clientWidth*.1,c.clientHeight*.2);
+      t.portraitn = (t.portraitn + t.portraitrate) % t.portraitnum;
+    if(me.selection.length > 1){
+      for(iy = 0;iy < 2;iy++){
+        for(ix = 0;ix < 6;ix++){
+          if(me.selection.length > i){
+            ctx.drawImage(t.img,0,0,t.imgpixels,t.imgpixels,
+                          (c.clientWidth*.20)  + ix * (c.clientWidth *.04),
+                          (c.clientHeight*.8) + iy * (c.clientHeight*.1),
+                          c.clientWidth*.04,
+                          c.clientHeight*.1);
+          }
+          i++;
+        }
+        
+      }
+      
+      
+    }
+    else{
+      
+    }
   }
 }
 
