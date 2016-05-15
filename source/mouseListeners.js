@@ -1,10 +1,21 @@
 
 function mouseDown(e){
   if(e.button === 0){
-    me.isOnGameScreen = 1;
-    me.isClickedDown = 1;
-    me.dragStartX = e.clientX;
-    me.dragStartY = e.clientY;
+    //minimap
+    if(e.clientX < c.clientWidth*.125 && e.clientY > c.clientHeight*.76){
+      me.isClickedDown = 1;
+      me.isOnMiniMap = 0;
+      //num of pixels on mm / pixel clicked on * total pixels in map
+      me.x = (c.clientWidth*.125 * c.clientWidth / (map.width *map.tilesize) / e.clientX) *map.width * map.tilesize;
+      me.y = (c.clientHeight*.24 * c.clientHeight / e.clientY - c.clientHeight*.76) *map.width * map.tilesize; 
+    
+    }
+    else{
+      me.isOnGameScreen = 1;
+      me.isClickedDown = 1;
+      me.dragStartX = e.clientX;
+      me.dragStartY = e.clientY;
+    }
 	}else if(e.button == 2){
 		//ctx.strokeText(" right click ",110,100);
 	}

@@ -14,6 +14,7 @@ var me = {
     isClickedDown: 0,
     isDragging: 0,
     isOnGameScreen: 0,
+    isOnMiniMap: 0,
     cameraMoveY: "",
     cameraMoveX: "",
     cameraMoveSpeed: 4,

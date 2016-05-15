@@ -72,9 +72,9 @@ function drawUI(){
         for(ix = 0;ix < 6;ix++){
           if(me.selection.length > i){
             ctx.drawImage(t.img,0,0,t.imgpixels,t.imgpixels,
-                          (c.clientWidth*.20)  + ix * (c.clientWidth *.04),
+                          (c.clientWidth*.20)  + ix * (c.clientWidth *.06),
                           (c.clientHeight*.8) + iy * (c.clientHeight*.1),
-                          c.clientWidth*.04,
+                          c.clientWidth*.06,
                           c.clientHeight*.1);
           }
           i++;
@@ -88,10 +88,39 @@ function drawUI(){
       
     }
   }
+  //alert(mm);
 }
 
 function drawMiniMap(){
   
+  var u;
+  var size = 2;
+  ctx.drawImage(mm, 0,c.clientHeight*.76,c.clientWidth*.125,c.clientHeight*.24);
+  ctx.strokeRect(0 + c.clientWidth*.125 * (me.x / (map.width *map.tilesize)),
+                 c.clientHeight*.76 + c.clientHeight*.24 * me.y / (map.height * map.tilesize),
+                 c.clientWidth*.125 * c.clientWidth / (map.width *map.tilesize),
+                 c.clientHeight*.24 * c.clientHeight / (map.height *map.tilesize));
+                 //alert("test");
+  if(map.units.length){
+    ctx.save();
+    for(var i = 0;i < map.units.length;i++){
+      u = map.units[i];
+      if(u.isBuilding){
+        size = 6;
+      }
+        
+          ctx.fillRect((0) + (u.x / (map.width * map.tilesize)) * (c.clientWidth * .125) - size/2,
+                         (c.clientHeight * .76) + (u.y / (map.height * map.tilesize)) * (c.clientHeight * .24) - size / 2,
+                         size,
+                         size);
+          //u.imgn = (u.imgn + u.imgrate) % u.imgnum;
+        
+         
+        
+      
+    }
+    ctx.restore();
+  }
 }
 
 function drawBox(){
@@ -116,7 +145,7 @@ function drawBox(){
       height = me.dragStartY - me.dragNowY;
     }
     
-    ctx.strokeStyle="#FF00F0";
+    //ctx.strokeStyle="#FF0F50";
     ctx.strokeRect(x, y, width, height);
   }
   

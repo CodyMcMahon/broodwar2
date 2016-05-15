@@ -1,5 +1,5 @@
 var map;
-
+var mm;
 function mapinit (){
   map = {
     width: 27,
@@ -34,7 +34,20 @@ function mapinit (){
                [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2]],
     floor : [shitgroundtile1,shitgroundtile2,blackedgetile],
     units : [],
+    minimap : new Image(),
     //edge : ,
     //test: "test",
 }; 
+mm = document.createElement('canvas');
+mm.id = "minimap";
+mm.width = map.width;
+mm.height = map.height;
+var ctx2 = mm.getContext("2d");
+for(iy = 0;iy < mm.height;iy++){
+    for(ix = 0;ix < mm.width;ix++){
+      temp = map.tiledata[iy][ix];
+      ctx2.drawImage(map.floor[temp], 0,0,1,1,ix , iy, 1, 1);
+    }
+  }
+  map.minimap.src = mm.toDataURL();
 }
