@@ -11,10 +11,13 @@ window.requestAnimFrame = (function () {
 
 var c,ctx;
 function startup(){
+  //var asd = [];
+  //if(asd)
+    //alert(asd.length);
   c = document.getElementById("mat");
   ctx = c.getContext("2d");
   c.width = document.body.clientWidth;
-  c.height = 800;//document.body.clientHeight;
+  c.height = 920;//document.body.clientHeight;
   ldassets();
   mapinit();
   //alert("fuck");
@@ -30,6 +33,10 @@ function startup(){
 	c.addEventListener("mouseup", mouseUp, false);
   c.addEventListener("mousemove", mouseMove, false);
   c.addEventListener("mouseout", mouseOut, false);
+  //alert("1");
+  loadTestStuff();//TESTSTUFF
+  
+  //alert("2");
   (function animationLOOP() {
         drawState();
         requestAnimFrame(animationLOOP, c);

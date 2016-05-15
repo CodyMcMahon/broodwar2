@@ -33,6 +33,7 @@ function mapinit (){
                [2,0,1,0,1,0,0,1,0,1,0,0,1,0,1,0,0,1,0,1,0,0,1,0,1,0,2],
                [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2]],
     floor : [shitgroundtile1,shitgroundtile2,blackedgetile],
+    units : [],
     //edge : ,
     //test: "test",
 }; 

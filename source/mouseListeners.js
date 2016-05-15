@@ -27,6 +27,24 @@ function mouseOut(e){
   me.isOnGameScreen = 0;
   me.isClickedDown = 0;
   me.isDragging = 0;
+  if(e.clientY < settings.scrollborder){
+    me.cameraMoveY = "north";
+  }
+  else if(e.clientY > c.height - settings.scrollborder){
+    me.cameraMoveY = "south";
+  }
+  else{
+    me.cameraMoveY = "";
+  }
+  if(e.clientX < settings.scrollborder){
+    me.cameraMoveX = "west";
+  }
+  else if(e.clientX > c.width - settings.scrollborder){
+    me.cameraMoveX = "east";
+  }
+  else{
+    me.cameraMoveX = "";
+  }
 }
 
 function mouseMove(e){
@@ -46,19 +64,19 @@ function mouseMove(e){
       me.isDragging = 1;
     }
   }
-  if(e.clientY < 20){
+  if(e.clientY < settings.scrollborder){
     me.cameraMoveY = "north";
   }
-  else if(e.clientY > c.height - 20){
+  else if(e.clientY > c.height - settings.scrollborder){
     me.cameraMoveY = "south";
   }
   else{
     me.cameraMoveY = "";
   }
-  if(e.clientX < 20){
+  if(e.clientX < settings.scrollborder){
     me.cameraMoveX = "west";
   }
-  else if(e.clientX > c.width - 20){
+  else if(e.clientX > c.width - settings.scrollborder){
     me.cameraMoveX = "east";
   }
   else{

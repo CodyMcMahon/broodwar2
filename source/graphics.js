@@ -1,14 +1,15 @@
 
 function drawState(){
   ctx.clearRect(0,0,c.width,c.height);
-  ctx.save();
+  //ctx.save();
   drawBackground();
+  //*
   drawUnits();
   drawUI(); 
   drawMiniMap();
   drawBox();
-  
-  ctx.restore();
+  /* */
+  //ctx.restore();
   //return;
 }
 
@@ -39,11 +40,33 @@ function drawBackground(){
 }
 
 function drawUnits(){
-  
+  var u;
+  if(map.units.length){
+    for(var i = 0;i < map.units.length;i++){
+      u = map.units[i];
+      if (((u.x > me.x - (map.tilesize*2)) || (u.x < me.x + c.width + (map.tilesize*2))) && ((u.y > me.y - (map.tilesize*2)) || (u.y < me.y + c.height + (map.tilesize*2)))){
+        if(u.isBuilding){
+          ctx.drawImage(u.img,
+                        Math.floor(u.imgn) * u.imgpixels,0,u.imgpixels,u.imgpixels,
+                        u.x-me.x, u.y-me.y, u.imgsize, u.imgsize);
+          u.imgn = (u.imgn + u.imgrate) % u.imgnum;
+        }
+        else{
+          
+        }
+      }
+    }
+  }
 }
 
 function drawUI(){
+  var t;
   ctx.drawImage(placeholder_ui_image,0,0,c.width,c.height);
+  if(me.selection.length){
+    t = me.selection[0];
+    ctx.drawImage(t.portrait,Math.floor(t.portraitn) * portraitpixels,0,portraitpixels,portraitpixels,c.clientWidth*.6,c.clientHeight*.8,c.clientWidth*.1,c.clientHeight*.2);
+    t.portraitn += t.portraitrate % t.portraitnum;
+  }
 }
 
 function drawMiniMap(){

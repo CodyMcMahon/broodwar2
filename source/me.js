@@ -1,8 +1,8 @@
 
 
 var me = {
-    selection:0,
-    controlGroups:0,
+    selection:[],
+    controlGroups:[[],[],[],[],[],[],[],[],[],[]],
     teamID:1,
     teamColor:1,
     x:100,
@@ -18,3 +18,11 @@ var me = {
     cameraMoveX: "",
     cameraMoveSpeed: 4,
 }; 
+function selectUnits(s,units){
+  for(var i = 0;i < units.length;i++){
+    s[s.length] = units[i];
+  }
+}
+function selectClear(s){
+  s=[];
+}
