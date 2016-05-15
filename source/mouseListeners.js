@@ -1,13 +1,35 @@
 
 function mouseDown(e){
+  var x,y;
   if(e.button === 0){
     //minimap
     if(e.clientX < c.clientWidth*.125 && e.clientY > c.clientHeight*.76){
       me.isClickedDown = 1;
-      me.isOnMiniMap = 0;
-      //num of pixels on mm / pixel clicked on * total pixels in map
-      me.x = (c.clientWidth*.125 * c.clientWidth / (map.width *map.tilesize) / e.clientX) *map.width * map.tilesize;
-      me.y = (c.clientHeight*.24 * c.clientHeight / e.clientY - c.clientHeight*.76) *map.width * map.tilesize; 
+      me.isOnMiniMap = 1;
+      //pixel clicked on / num of pixels on mm  * total pixels in map
+      //me.x = ((e.clientX- (c.clientWidth*.125 * c.clientWidth / (map.width *map.tilesize)) / (c.clientWidth*.125)  /2))*map.width * map.tilesize;
+      x = e.clientX / (c.clientWidth*.125)*map.width * map.tilesize - c.width / 2;
+      if(x<0){
+        me.x = 0;
+      } 
+      else if(x+c.width>map.width * map.tilesize){
+        me.x = map.width * map.tilesize - c.width;
+      }
+      else{
+        me.x = x;
+      }
+      //alert( c.width / (map.height * map.tilesize) / 2 );
+      y = (e.clientY - c.clientHeight*.76) / (c.clientHeight*.24 ) *map.height * map.tilesize -  c.height / 2; 
+      if(y<0){
+        me.y = 0;
+      } 
+      else if(y+c.height*(4/5)>map.height * map.tilesize){
+        me.y = (map.height*map.tilesize) - c.height*(4/5);
+      }
+      else{
+        me.y = y;
+      }
+       //alert();
     
     }
     else{
@@ -28,7 +50,7 @@ function mouseUp(e){
   var x,y,width,height;
   
   if(e.button === 0){
-    if(me.isClickedDown){
+    if(me.isClickedDown && me.isOnGameScreen){
       if(me.isDragging){//comment here
         if(me.dragStartX < me.dragNowX){
           x = me.dragStartX;
@@ -83,6 +105,7 @@ function mouseUp(e){
     me.isOnGameScreen = 0;
     me.isClickedDown = 0;
     me.isDragging = 0;
+    me.isOnMiniMap = 0;
     //me.dragStartX = e.clientX;
     //me.dragStartY = e.clientY;
 	}
@@ -95,6 +118,7 @@ function mouseOut(e){
   me.isOnGameScreen = 0;
   me.isClickedDown = 0;
   me.isDragging = 0;
+  me.isOnMiniMap = 0;
   if(e.clientY < settings.scrollborder){
     me.cameraMoveY = "north";
   }
@@ -116,7 +140,7 @@ function mouseOut(e){
 }
 
 function mouseMove(e){
-  
+  var x,y;
 		//ctx.strokeText(me.dragNowX,110,100);
   if(me.isClickedDown && me.isOnGameScreen){
     me.dragNowX = e.clientX;
@@ -149,5 +173,29 @@ function mouseMove(e){
   }
   else{
     me.cameraMoveX = "";
+  }
+  if(me.isClickedDown && me.isOnMiniMap){
+    x = e.clientX / (c.clientWidth*.125)*map.width * map.tilesize - c.width / 2;
+      if(x<0){
+        me.x = 0;
+      } 
+      else if(x+c.width>map.width * map.tilesize){
+        me.x = map.width * map.tilesize - c.width;
+      }
+      else{
+        me.x = x;
+      }
+      //alert( c.width / (map.height * map.tilesize) / 2 );
+      y = (e.clientY - c.clientHeight*.76) / (c.clientHeight*.24 ) *map.height * map.tilesize -  c.height / 2; 
+      if(y<0){
+        me.y = 0;
+      } 
+      else if(y+c.height*(4/5)>map.height * map.tilesize){
+        me.y = (map.height*map.tilesize) - c.height*(4/5);
+      }
+      else{
+        me.y = y;
+      }
+  
   }
 }
