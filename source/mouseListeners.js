@@ -100,6 +100,7 @@ function mouseUp(e){
         }
       }
       //alert(u.length);
+      me.selection||me.selection[0].portraitn = 0;
       me.selection = u;
     }
     me.isOnGameScreen = 0;
