@@ -100,9 +100,6 @@ function mouseUp(e){
         }
       }
       //alert(u.length);
-    if(me.selection){
-      me.selection[0].portraitn = 0;
-    }
       me.selection = u;
     }
     me.isOnGameScreen = 0;
@@ -111,10 +108,15 @@ function mouseUp(e){
     me.isOnMiniMap = 0;
     //me.dragStartX = e.clientX;
     //me.dragStartY = e.clientY;
+    
+    if(me.selection){
+      me.selection[0].portraitn = 0;
+    }
 	}
   else if(e.button == 2){
     
 	}
+
 }
 
 function mouseOut(e){
