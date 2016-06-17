@@ -1,5 +1,6 @@
 broodwar2
 a game by wondercoolowl and tainted
 
-play the most up to date version at
-http://codymcmahon.github.io/broodwar2/
+play the most up to date version at | http://codymcmahon.github.io/broodwar2/
+
+it is currently in a prealpha state so it is probably unplayable 
